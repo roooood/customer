@@ -13,11 +13,11 @@ var secret = 'demo';
 app.post('/auth', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   var params = req.body;
-  if (secret != params.secret) {
-    res.send({
-      result: 'error'
-    })
-  }
+  // if (secret != params.secret) {
+  //   res.send({
+  //     result: 'error'
+  //   })
+  // }
   Connection.query('SELECT * FROM `users`  where `token`=? LIMIT 1', [params.token])
     .then(results => {
       if (results[0] != null) {
@@ -36,11 +36,11 @@ app.post('/auth', (req, res) => {
 app.post('/balance', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   var params = req.body;
-  if (secret != params.secret) {
-    res.send({
-      result: 'error'
-    })
-  }
+  // if (secret != params.secret) {
+  //   res.send({
+  //     result: 'error'
+  //   })
+  // }
   Connection.query('SELECT * FROM `users`  where `id`=? LIMIT 1', [params.id])
     .then(results => {
       if (results[0] != null) {
